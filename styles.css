@@ -216,7 +216,7 @@ h2 {
     /* gap: 10px; */
     overflow: hidden;
     filter: drop-shadow(1px 1px 4px #63656d);
-
+    
 }
 
 .search-result-container {
@@ -245,15 +245,22 @@ h2 {
     padding: 10px;
     cursor: pointer;
     background-color: #bfc0cc;
+    border-top: 1px solid #90919f;
 }
 
 .search-result > button:hover {
     background-color: #afb0bf;
 }
 
+.result-not-found-btn:hover {
+    background-color: #bfc0cc !important;
+    cursor: default;
+}
+
 .search-results > div:first-child > .search-result > button {
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+    border-top: none;
 }
 
 

@@ -35,7 +35,7 @@ function onMapClick(e) {
 };
 
 function onLocationFound(e) {
-    console.log(e);
+    //console.log(e);
     localLocation = e.latlng;
     localLocationFound = true;
     localLocationCircle = L.circle(localLocation, 8000, {fillOpacity: "0.15", opacity: "0.7"});
@@ -107,6 +107,71 @@ const searchResults = document.getElementById("search-results");
 
 searchBar.addEventListener("keyup", ({key}) => {
     if (key === "Enter") {
-        console.log(searchBar.value.trim());
+        var value = searchBar.value.trim();
+        
+        if (value === "")
+        {
+            searchResults.innerHTML = "";
+        }
+        else {
+            displaySearchResults(value);
+        }
     }
 })
+
+async function displaySearchResults(query) {
+    const request = new Request(`https://nominatim.openstreetmap.org/search?q=%22${query}%22&format=jsonv2`, {
+        method: "GET"
+    });
+
+    let res = await fetch(request);
+    let result = await res.json();
+
+    searchResults.innerHTML = "";
+
+    if (result.length === 0) {
+        searchResults.innerHTML += `
+<div class="search-result-container">
+    <div class="search-result">
+        <button disabled class="result-not-found-btn"><i class="fa-solid fa-water">&nbsp</i> Couldn't find this location.</button>
+    </div>
+</div>`
+    }
+
+    result.forEach(item => {
+        searchResults.innerHTML += `
+<div class="search-result-container">
+    <div class="search-result">
+        <button lat="${item.lat}" lon="${item.lon}" class="result-btn"><i class="fa-solid fa-location-dot">&nbsp</i> ${item.display_name}</button>
+    </div>
+</div>`
+    });
+
+    searchResults.style.display = "flex";
+
+    var resultButtons = document.getElementsByClassName("result-btn");
+    //console.log(resultButtons[0]);
+
+    for (let i = 0; i < resultButtons.length; i ++) {
+        let button = resultButtons[i];
+        button.onclick = function () {
+            lat = button.getAttribute("lat");
+            lon = button.getAttribute("lon");
+
+            map.setView([lat, lon], 12);
+
+            searchResults.style.display = "none";
+        }
+
+    }
+
+    // resultButtons.forEach(button => {
+    //     button.onclick = function () {
+    //         lat = button.getAttribute("lat");
+    //         lon = button.getAttribute("lon");
+
+    //         map.setView([lat, lon], 5);
+    //     }
+    // });
+
+}
