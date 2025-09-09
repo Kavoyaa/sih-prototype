@@ -1,0 +1,112 @@
+// Initialize map
+const map = L.map('map').setView([23.5, 83], 5);
+const defaultLocation = [23.5, 83];
+var localLocation = null;
+var localLocationFound = false;
+var localLocationCircle = null;
+
+// Add OpenStreetMap tile layer
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// new L.Control.Geocoder().addTo(map);
+
+// Add markers
+const markers = [
+    [0, 0],
+    [24, 83],
+    [21, 70],
+    [16, 73]
+];
+
+markers.forEach(coords => L.marker(coords).addTo(map));
+
+// Popup instance
+const popup = L.popup();
+
+// Event handlers
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent(`You clicked the map at ${e.latlng}`)
+        .openOn(map);
+};
+
+function onLocationFound(e) {
+    console.log(e);
+    localLocation = e.latlng;
+    localLocationFound = true;
+    localLocationCircle = L.circle(localLocation, 8000, {fillOpacity: "0.15", opacity: "0.7"});
+};
+
+function onLocationError(e) { alert(e.message) };
+
+// Register events
+map.on("click", onMapClick);
+map.on("locationfound", onLocationFound);
+map.on("locationerror", onLocationError);
+
+// Try locating user
+map.locate({ setView: false, maxZoom: 10 });
+
+// Buttons
+const allIndiaBtn = document.getElementById("all-india-btn");
+const localAreaBtn = document.getElementById("local-area-btn");
+const stateWiseBtn = document.getElementById("state-wise-btn");
+
+allIndiaBtn.onclick = function() {
+    allIndiaBtn.style.color = "#436a9f";
+    allIndiaBtn.style.borderColor = "#436a9f";
+
+    localAreaBtn.style.color = "#464646";
+    localAreaBtn.style.borderColor = "#464646";
+
+    stateWiseBtn.style.color = "#464646";
+    stateWiseBtn.style.borderColor = "#464646";
+
+    map.setView(defaultLocation, 5);
+};
+
+localAreaBtn.onclick = function() {
+    if (!localLocationFound) {
+        alert("Error: Unable to find geolocation.");
+        return;
+    }
+
+    allIndiaBtn.style.color = "#464646";
+    allIndiaBtn.style.borderColor = "#464646";
+
+    localAreaBtn.style.color = "#436a9f";
+    localAreaBtn.style.borderColor = "#436a9f";
+
+    stateWiseBtn.style.color = "#464646";
+    stateWiseBtn.style.borderColor = "#464646";
+
+    map.setView(localLocation, 12);
+
+    
+    localLocationCircle.addTo(map);
+};
+
+stateWiseBtn.onclick = function() {
+    allIndiaBtn.style.color = "#464646";
+    allIndiaBtn.style.borderColor = "#464646";
+
+    localAreaBtn.style.color = "#464646";
+    localAreaBtn.style.borderColor = "#464646";
+
+    stateWiseBtn.style.color = "#436a9f";
+    stateWiseBtn.style.borderColor = "#436a9f";
+};
+
+// Search bar
+const searchBar = document.getElementById("search");
+const searchResults = document.getElementById("search-results");
+
+searchBar.addEventListener("keyup", ({key}) => {
+    if (key === "Enter") {
+        console.log(searchBar.value.trim());
+    }
+})
