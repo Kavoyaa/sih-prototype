@@ -9,14 +9,15 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
     crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin="">
     </script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-
     <script src="https://kit.fontawesome.com/021741cec3.js" crossorigin="anonymous"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
     </style>
@@ -34,7 +35,9 @@
             <h2><a><i class="fa-solid fa-clipboard-question">&nbsp</i>FAQ</a></h2>
         </div>
         
-        <h2 class="submit-report-btn"><i class="fa-solid fa-arrow-up-from-bracket">&nbsp&nbsp</i><a>Submit Report</a></h2>
+        <a href="submit.html" style="text-decoration: none;">
+            <h2 class="submit-report-btn"><i class="fa-solid fa-arrow-up-from-bracket">&nbsp&nbsp</i>Submit Report</h2>
+        </a>
     </nav>
     </section>
 
@@ -50,11 +53,7 @@
                     <div><i class="fa-solid fa-magnifying-glass fa-s"></i></div>
                     <input type="text" placeholder="Search" class="filter-btn searcher" id="search">
                     <div class="search-results" id="search-results">
-                        <!-- <div class="search-result-container">
-                            <div class="search-result">
-                                <button><i class="fa-solid fa-location-dot">&nbsp</i> Mumbai, Maharashtra, India</button>
-                            </div>
-                        </div> -->
+                        <!-- will be generated via JS -->
                     </div>
                 </div>
                 <div>
@@ -68,10 +67,6 @@
         <div class="side-panel">
             <p>No hazards reported in your area.</p>
         </div>
-    </section>
-
-    <section>
-        <h1>Recently Verified Reports:</h1>
     </section>
 </body>
 </html>

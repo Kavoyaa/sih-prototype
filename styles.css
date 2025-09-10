@@ -87,6 +87,8 @@ h2 {
     filter: drop-shadow(1px 1px 4px #a8aab7);
     padding-left: 14px !important;
     padding-right: 14px !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .submit-report-btn:hover {
