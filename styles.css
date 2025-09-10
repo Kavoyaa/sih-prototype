@@ -38,7 +38,8 @@ h2 {
     
 }
 
-#map {
+/* map for home page */
+.map-home {
     height: 63vh;
     border-radius: 7px;
     /* border: 1px solid #d7d9e4; */
@@ -108,7 +109,7 @@ h2 {
 .hero {
     display: flex;
     flex-direction: space-between;
-    gap: 27px;
+    gap: 26px;
     margin-top: 8vh;
 }
 
@@ -270,4 +271,37 @@ h2 {
 .search-result > div:last-child > .search-result > button {
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
+}
+
+
+/* EXTRA CSS OF SUBMIT PAGE */
+
+/* map for submit page */
+.map-submit {
+    height: 40vh;
+    width: 400px;
+    border-radius: 7px;
+    /* border: 1px solid #d7d9e4; */
+    filter: saturate(1.65) drop-shadow(1px 1px 4px #a8aab7);
+    cursor: default;
+}
+
+.return-home-btn {
+    transition: 0.1s;
+    color: #436a9f;
+    border-radius: 7px;
+    background-color: var(--background);
+    border: 3px solid #436a9f;
+    /* box-shadow: 0px 2px #243152; */
+    cursor: pointer;
+    /* filter: drop-shadow(1px 1px 4px #a8aab7); */
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.return-home-btn:hover {
+    transition: 0.1s;
+    transform: translateY(-2px);
 }
