@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <script defer src="index.js"></script>
+    <script defer src="submit.js"></script>
     
     <section class="nav-container">
     <nav class="nav">
@@ -58,10 +58,11 @@
             <h2>Select location to report</h2>
             <div class="searcher-container">
                 <div><i class="fa-solid fa-magnifying-glass fa-s"></i></div>
-                    <input type="text" placeholder="Search" class="filter-btn searcher" id="search">
-                    <div class="search-results" id="search-results">
-                        <!-- will be generated via JS -->
+                <input type="text" placeholder="Search" class="filter-btn searcher" id="search">
+                <div class="search-results" id="search-results">
+                    <!-- will be generated via JS -->
                 </div>
+                <button class="filter-btn auto-detect-btn">Auto-Detect</button>
             </div>  
             <div id="map" class="map-submit"></div>
         </div>

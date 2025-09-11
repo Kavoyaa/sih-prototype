@@ -44,7 +44,7 @@ h2 {
     border-radius: 7px;
     /* border: 1px solid #d7d9e4; */
     filter: saturate(1.65) drop-shadow(1px 1px 4px #a8aab7);
-    cursor: default;
+    cursor: default !important;
 }
 
 .nav-container {
@@ -283,8 +283,8 @@ h2 {
     border-radius: 7px;
     /* border: 1px solid #d7d9e4; */
     filter: saturate(1.65) drop-shadow(1px 1px 4px #a8aab7);
-    cursor: default;
-    margin-top: 11px;
+    cursor: default !important;
+    margin-top: 13px;
 }
 
 .return-home-btn {
@@ -331,4 +331,13 @@ textarea {
 
 .form-map-container {
     flex: 1;
+}
+
+.auto-detect-btn {
+    border: none;
+    background-color: #c7cad6;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: 2px solid #464646;
+
 }

@@ -39,6 +39,11 @@ function onLocationFound(e) {
     localLocation = e.latlng;
     localLocationFound = true;
     localLocationCircle = L.circle(localLocation, 8000, {fillOpacity: "0.15", opacity: "0.7"});
+
+    localStorage.setItem("userLatitude", localLocation["lat"]);
+    localStorage.setItem("userLongitude", localLocation["lng"]);
+    
+    // console.log(typeof(localStorage));
 };
 
 function onLocationError(e) { alert(e.message) };
