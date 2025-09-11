@@ -278,12 +278,13 @@ h2 {
 
 /* map for submit page */
 .map-submit {
-    height: 40vh;
-    width: 400px;
+    height: 52vh;
+    /* width: 400px; */
     border-radius: 7px;
     /* border: 1px solid #d7d9e4; */
     filter: saturate(1.65) drop-shadow(1px 1px 4px #a8aab7);
     cursor: default;
+    margin-top: 11px;
 }
 
 .return-home-btn {
@@ -304,4 +305,30 @@ h2 {
 .return-home-btn:hover {
     transition: 0.1s;
     transform: translateY(-2px);
+}
+
+.form-input {
+    width: 500px;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #626262;
+
+}
+
+textarea {
+    height: 66%;
+    border: 1px solid #626262;
+}
+
+
+.form-container {
+    display: flex;
+    justify-content:space-around;
+    gap: 54px;
+}
+
+.form-map-container {
+    flex: 1;
 }
